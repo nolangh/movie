@@ -2,10 +2,9 @@
 
 ### Browse for movies to watch
 
-## Stack:
+## Stack: \* Angular
 
-    * Angular
-    * Firebase
+        * Firebase
     * typeScript
     * Material UI
 
