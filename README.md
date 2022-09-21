@@ -2,12 +2,12 @@
 
 ### Browse for movies to watch
 
-## Stack -
+## Stack:
 
-    - Angular
-    - Firebase
-    - typeScript
-    - Material UI
+    * Angular
+    * Firebase
+    * typeScript
+    * Material UI
 
 
     - API: https://www.themoviedb.org/
