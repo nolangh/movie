@@ -9,4 +9,6 @@
 - typeScript
 - Material UI
 
-  - API: https://www.themoviedb.org/
+## Random Info :
+
+- API: https://www.themoviedb.org/
