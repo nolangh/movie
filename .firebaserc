@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "notflix-1de69": {
+      "hosting": {
+        "movie": [
+          "notflix-1de69"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "notflix-1de69"
+  }
+}

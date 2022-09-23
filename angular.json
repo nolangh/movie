@@ -100,6 +100,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "movie:build:production",
+            "firebaseProject": "notflix-1de69",
+            "firebaseHostingSite": "notflix-1de69"
+          }
         }
       }
     }
