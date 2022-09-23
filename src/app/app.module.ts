@@ -10,6 +10,7 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { providePerformance,getPerformance } from '@angular/fire/performance';
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),
-    providePerformance(() => getPerformance())
+    providePerformance(() => getPerformance()),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
