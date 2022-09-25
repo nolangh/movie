@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { providePerformance, getPerformance } from '@angular/fire/performance';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MovieListComponent } from './movie/movie-list/movie-list.component';
 //* Material UI components
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
