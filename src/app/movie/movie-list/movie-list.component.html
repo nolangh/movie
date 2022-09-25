@@ -1,1 +1,3 @@
-<p>movie-list works!</p>
+<ul *ngIf="Movies$ | async as Movies">
+    <li *ngForOf="let movie of Movies"></li>
+</ul>

@@ -9,14 +9,20 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
+import { CommonModule } from '@angular/common';
 import { providePerformance, getPerformance } from '@angular/fire/performance';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarComponent } from './navbar/navbar.component';
+//* Material UI components
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
   imports: [
+    MatCardModule,
+    MatListModule,
     HttpClientModule,
     MatToolbarModule,
     BrowserModule,

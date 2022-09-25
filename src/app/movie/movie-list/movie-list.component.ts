@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { MovieService } from 'src/app/service/movie.service';
+import { CommonModule } from '@angular/common';
+import { Movies } from '../models/movie.model';
 
 @Component({
   selector: 'app-movie-list',
@@ -6,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-list.component.scss'],
 })
 export class MovieListComponent implements OnInit {
-  constructor() {}
+  Movies$: Observable<Movies>;
+  constructor(private movieService: MovieService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.Movies$ = this.movieService.getPopularMovies();
+  }
 }
