@@ -34,4 +34,10 @@ export class MovieService {
       this.url + '/movie/top_rated?api_key=' + environment.movieApikey
     );
   }
+
+  getUpcomingMovies(): Observable<Movies> {
+    return this.http.get<Movies>(
+      this.url + '/movie/upcoming?api_key=' + environment.movieApikey
+    );
+  }
 }

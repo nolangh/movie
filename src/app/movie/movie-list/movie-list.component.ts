@@ -15,22 +15,23 @@ import { environment } from 'src/environments/environment';
 export class MovieListComponent implements OnInit {
   latestMovies: any;
   popularMovies!: Movies;
+  upcomingMovies!: Movies;
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
     this.getLatestMovies();
     this.getPopularMovies();
+    this.getUpcomingMovies();
     //* TODO add all methods here so data is available on page load
   }
 
-  //* Fetch popular Movies
-  //* TODO Copy this methode for fetching other data
+  //* Popular Movies
   getPopularMovies() {
     this.movieService.getPopularMovies().subscribe(
       (res) => {
         this.popularMovies = this.modifyData(res);
-        console.table(this.popularMovies);
+        console.log(this.popularMovies);
       },
       (err) => {
         console.log('Not Able to fetch Movies', err);
@@ -38,12 +39,13 @@ export class MovieListComponent implements OnInit {
     );
   }
 
-  //* Fetch latest Movies
+  //* Latest Movies
   getLatestMovies() {
     this.movieService.getLatestMovie().subscribe(
       (res) => {
         this.latestMovies = res;
-        console.table(this.latestMovies, console.time());
+        console;
+        console.table(this.latestMovies);
       },
       (err) => {
         console.log("Couldn't fetch Latest Movies", err);
@@ -51,6 +53,20 @@ export class MovieListComponent implements OnInit {
     );
   }
 
+  //* UpComing Movies
+  getUpcomingMovies() {
+    this.movieService.getUpcomingMovies().subscribe(
+      (res) => {
+        this.upcomingMovies = this.modifyData(res);
+        console.log(this.upcomingMovies);
+      },
+      (err) => {
+        console.log('Error While fetching Upcoming Movies', err);
+      }
+    );
+  }
+
+  //* Modifier Method
   modifyData(movies: Movies): Movies {
     if (movies.results) {
       movies.results.forEach((element: any) => {
