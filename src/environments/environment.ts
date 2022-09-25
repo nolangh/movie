@@ -12,7 +12,9 @@ export const environment = {
     messagingSenderId: '876698212555',
     measurementId: 'G-E8RFM9DXNQ',
   },
-  production: false
+  movieApikey: '1cc53c11207bd290f2f32bf3be3feb6b',
+
+  production: false,
 };
 
 /*
