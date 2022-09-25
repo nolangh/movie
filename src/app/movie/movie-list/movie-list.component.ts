@@ -43,10 +43,10 @@ export class MovieListComponent implements OnInit {
     this.movieService.getLatestMovie().subscribe(
       (res) => {
         this.latestMovies = res;
-        console.table(this.latestMovies);
+        console.table(this.latestMovies, console.time());
       },
       (err) => {
-        console.table("Couldn't fetch Latest Movies", err);
+        console.log("Couldn't fetch Latest Movies", err);
       }
     );
   }
