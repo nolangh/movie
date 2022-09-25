@@ -5,6 +5,8 @@ import { Movies } from '../movie/models/movie.model';
 import { CommonModule } from '@angular/common';
 import { environment } from 'src/environments/environment';
 
+//* ANCHOR Possible add this after the api key "&language=en-US&page=1"
+
 @Injectable({
   providedIn: 'root',
 })
@@ -20,10 +22,16 @@ export class MovieService {
     );
   }
 
-  //* If the Api pull has an issue change the Observable type to movie.model
+  //*  TODO Possible change this so the response is stored in an array
   getPopularMovies(): Observable<Movies> {
     return this.http.get<Movies>(
       this.url + '/movie/popular?api_key=' + environment.movieApikey
+    );
+  }
+
+  getTopRatedMovies(): Observable<Movies> {
+    return this.http.get<Movies>(
+      this.url + '/movie/top_rated?api_key=' + environment.movieApikey
     );
   }
 }
