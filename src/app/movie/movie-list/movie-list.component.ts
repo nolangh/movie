@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./movie-list.component.scss'],
 })
 export class MovieListComponent implements OnInit {
-  latestMovies: any;
+  latestMovies!: any;
   popularMovies!: Movies;
   upcomingMovies!: Movies;
 
@@ -44,8 +44,8 @@ export class MovieListComponent implements OnInit {
     this.movieService.getLatestMovie().subscribe(
       (res) => {
         this.latestMovies = this.changeData(res);
-        console;
         console.table(this.latestMovies);
+        console.log(res.backdrop_path);
       },
       (err) => {
         console.log("Couldn't fetch Latest Movies", err);
@@ -66,6 +66,7 @@ export class MovieListComponent implements OnInit {
         '?api_key=' +
         environment.movieApikey;
     }
+
     return res;
   }
 
