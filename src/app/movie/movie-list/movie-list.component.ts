@@ -4,8 +4,7 @@ import { MovieService } from 'src/app/service/movie.service';
 import { CommonModule } from '@angular/common';
 import { Movies } from '../models/movie.model';
 import { environment } from 'src/environments/environment';
-
-//* ANCHOR look into making these methods observables
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Component({
   selector: 'app-movie-list',
@@ -31,7 +30,6 @@ export class MovieListComponent implements OnInit {
     this.movieService.getPopularMovies().subscribe(
       (res) => {
         this.popularMovies = this.modifyData(res);
-        console.log(this.popularMovies);
       },
       (err) => {
         console.log('Not Able to fetch Movies', err);
@@ -44,8 +42,7 @@ export class MovieListComponent implements OnInit {
     this.movieService.getLatestMovie().subscribe(
       (res) => {
         this.latestMovies = this.changeData(res);
-        console.table(this.latestMovies);
-        console.log(res.backdrop_path);
+        console.log(this.latestMovies);
       },
       (err) => {
         console.log("Couldn't fetch Latest Movies", err);
@@ -75,7 +72,6 @@ export class MovieListComponent implements OnInit {
     this.movieService.getUpcomingMovies().subscribe(
       (res) => {
         this.upcomingMovies = this.modifyData(res);
-        console.log(this.upcomingMovies);
       },
       (err) => {
         console.log('Error While fetching Upcoming Movies', err);
