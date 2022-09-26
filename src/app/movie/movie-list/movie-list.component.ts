@@ -89,7 +89,7 @@ export class MovieListComponent implements OnInit {
         element.backdrop_path =
           'https://image.tmdb.org/t/p/original' +
           element.backdrop_path +
-          'api_key?' +
+          '?api_key=' +
           environment.movieApikey;
         if (!element.title) {
           element.title = element.name;
