@@ -58,12 +58,12 @@ export class MovieListComponent implements OnInit {
       res.backdrop_path =
         'https://image.tmdb.org/t/p/original' +
         res.poster_path +
-        'api_key?' +
+        '?api_key=' +
         environment.movieApikey;
     } else {
       'https://image.tmdb.org/t/p/original' +
         res.backdrop_path +
-        'api_key?' +
+        '?api_key=' +
         environment.movieApikey;
     }
     return res;
