@@ -43,7 +43,7 @@ export class MovieListComponent implements OnInit {
   getLatestMovies() {
     this.movieService.getLatestMovie().subscribe(
       (res) => {
-        this.latestMovies = res;
+        this.latestMovies = this.changeData(res);
         console;
         console.table(this.latestMovies);
       },
@@ -51,6 +51,22 @@ export class MovieListComponent implements OnInit {
         console.log("Couldn't fetch Latest Movies", err);
       }
     );
+  }
+
+  changeData(res: any): any {
+    if (!res.backdrop_path) {
+      res.backdrop_path =
+        'https://image.tmdb.org/t/p/original' +
+        res.poster_path +
+        'api_key?' +
+        environment.movieApikey;
+    } else {
+      'https://image.tmdb.org/t/p/original' +
+        res.backdrop_path +
+        'api_key?' +
+        environment.movieApikey;
+    }
+    return res;
   }
 
   //* UpComing Movies
