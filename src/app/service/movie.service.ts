@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Movies } from '../movie/models/movie.model';
 import { CommonModule } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 //* ANCHOR Possible add this after the api key "&language=en-US&page=1"
 
@@ -22,7 +23,6 @@ export class MovieService {
     );
   }
 
-  //*  TODO Possible change this so the response is stored in an array
   getPopularMovies(): Observable<Movies> {
     return this.http.get<Movies>(
       this.url + '/movie/popular?api_key=' + environment.movieApikey
@@ -32,6 +32,12 @@ export class MovieService {
   getTopRatedMovies(): Observable<Movies> {
     return this.http.get<Movies>(
       this.url + '/movie/top_rated?api_key=' + environment.movieApikey
+    );
+  }
+
+  getTrendingMovies(): Observable<Movies> {
+    return this.http.get<Movies>(
+      this.url + '/trending/all/week?api_key=' + environment.movieApikey
     );
   }
 

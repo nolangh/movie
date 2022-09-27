@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MovieService } from 'src/app/service/movie.service';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Movies } from '../models/movie.model';
 import { environment } from 'src/environments/environment';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
@@ -13,8 +14,10 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 })
 export class MovieListComponent implements OnInit {
   latestMovies!: any;
+  topRatedMovies!: Movies;
   popularMovies!: Movies;
   upcomingMovies!: Movies;
+  trendingMovies!: Movies;
 
   constructor(private movieService: MovieService) {}
 
@@ -22,6 +25,8 @@ export class MovieListComponent implements OnInit {
     this.getLatestMovies();
     this.getPopularMovies();
     this.getUpcomingMovies();
+    this.getTrendingMovies();
+    this.getTopRatedMovies();
     //* TODO add all methods here so data is available on page load
   }
 
@@ -42,7 +47,7 @@ export class MovieListComponent implements OnInit {
     this.movieService.getLatestMovie().subscribe(
       (res) => {
         this.latestMovies = this.changeData(res);
-        console.log(this.latestMovies);
+        console.table(this.latestMovies);
       },
       (err) => {
         console.log("Couldn't fetch Latest Movies", err);
@@ -50,6 +55,43 @@ export class MovieListComponent implements OnInit {
     );
   }
 
+  //* UpComing Movies
+  getUpcomingMovies() {
+    this.movieService.getUpcomingMovies().subscribe(
+      (res) => {
+        this.upcomingMovies = this.modifyData(res);
+      },
+      (err) => {
+        console.log('Error While fetching Upcoming Movies', err);
+      }
+    );
+  }
+
+  //* Top rated movies
+  getTopRatedMovies() {
+    this.movieService.getTopRatedMovies().subscribe(
+      (res) => {
+        this.topRatedMovies = this.modifyData(res);
+      },
+      (err) => {
+        console.log('Error While fetching Upcoming Movies', err);
+      }
+    );
+  }
+
+  //* Trending Movies
+  getTrendingMovies() {
+    this.movieService.getTrendingMovies().subscribe(
+      (res) => {
+        this.trendingMovies = this.modifyData(res);
+      },
+      (err) => {
+        console.log('Error While fetching trending Movies', err);
+      }
+    );
+  }
+
+  //* Modifier Methods
   changeData(res: any): any {
     if (!res.backdrop_path) {
       res.backdrop_path =
@@ -66,25 +108,11 @@ export class MovieListComponent implements OnInit {
 
     return res;
   }
-
-  //* UpComing Movies
-  getUpcomingMovies() {
-    this.movieService.getUpcomingMovies().subscribe(
-      (res) => {
-        this.upcomingMovies = this.modifyData(res);
-      },
-      (err) => {
-        console.log('Error While fetching Upcoming Movies', err);
-      }
-    );
-  }
-
-  //* Modifier Method
   modifyData(movies: Movies): Movies {
     if (movies.results) {
       movies.results.forEach((element: any) => {
         element.backdrop_path =
-          'https://image.tmdb.org/t/p/original' +
+          'https://api.image.tmdb.org/t/p/original' +
           element.backdrop_path +
           '?api_key=' +
           environment.movieApikey;
