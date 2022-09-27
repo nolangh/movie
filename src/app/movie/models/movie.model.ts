@@ -1,6 +1,5 @@
 export interface Movies {
-  //* TODO: I dunno, maybe try removing this if it doesn't work
-  results: any[]; //* TODO Possible wrap this object in an array called results
+  results: any;
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection?: null;

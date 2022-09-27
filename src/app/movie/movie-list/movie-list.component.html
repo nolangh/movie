@@ -1,9 +1,26 @@
 <div class="container-fluid p-0 m-0">
-    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" *ngIf="latestMovies">
+    <!--* Latest Movies-->
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" *ngIf="popularMovies">
         <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="100">
-                <img src="{{latestMovies?.backdrop_path}}" class="d-block w-500" height="500" width="500px" alt="..." />
+            <div class="carousel-item active" data-bs-interval="50"
+                *ngFor="let movie of trendingMovies?.results; let i = index">
+                <img src="{{movie?.backdrop_path}}" class=" img-fluid d-block w-500" alt="{{movie?.original_title}}" />
             </div>
         </div>
     </div>
-</div>
+
+    <!--* Trending Movies
+    <div class="row mt-3 pt-2 px-2" class="background-color: coral;">
+        <h6>Trending Movies</h6>
+        <div class="col md-2 mt-3" *ngFor="let movie of trendingMovies?.results; let i = index">
+            <div class="card bg-dark" *ngIf="i < 6">
+                <img src="{{movie.backdrop_path}}" class="card-img-top" alt="{{movie.original_title}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{movie.title}}</h5>
+                    <p><span class="text-warning">rating</span> : {{movie.vote_average}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> -->

@@ -27,7 +27,6 @@ export class MovieListComponent implements OnInit {
     this.getUpcomingMovies();
     this.getTrendingMovies();
     this.getTopRatedMovies();
-    //* TODO add all methods here so data is available on page load
   }
 
   //* Popular Movies
@@ -47,6 +46,7 @@ export class MovieListComponent implements OnInit {
     this.movieService.getLatestMovie().subscribe(
       (res) => {
         this.latestMovies = this.changeData(res);
+        console.log(this.latestMovies.backdrop_path);
         console.table(this.latestMovies);
       },
       (err) => {
@@ -105,14 +105,13 @@ export class MovieListComponent implements OnInit {
         '?api_key=' +
         environment.movieApikey;
     }
-
     return res;
   }
   modifyData(movies: Movies): Movies {
     if (movies.results) {
       movies.results.forEach((element: any) => {
         element.backdrop_path =
-          'https://api.image.tmdb.org/t/p/original' +
+          'https://image.tmdb.org/t/p/original' +
           element.backdrop_path +
           '?api_key=' +
           environment.movieApikey;
